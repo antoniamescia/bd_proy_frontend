@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="form">
+  <div class="container">
+    <div class="input">
+    <label for="inputEmail" class="label">Usuario</label>
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        formControlName="email"
+        placeholder="Ingresa tu usuario"
+      />
+    </div>
+    <div class="input">
+    <label for="inputPassword" class="label">Contraseña</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Ingresa tu contraseña" formControlName="password"/>
+      <div class="forgot-pass">
+
+          <a href="" class="forgot">Olvidé mi contraseña</a>
+      </div>
+    </div>
+
+        <button type="submit" class="submit" (click)="login()">Iniciar sesión</button>
+
+  </div>
+</form>

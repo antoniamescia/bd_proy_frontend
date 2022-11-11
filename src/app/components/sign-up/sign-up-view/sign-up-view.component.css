@@ -1,0 +1,27 @@
+.view{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+
+.title{
+    width: 400px;
+    padding: 12px;
+    display: flex;
+    right: 20px;
+}

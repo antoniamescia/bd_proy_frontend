@@ -1,0 +1,44 @@
+.container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.03);
+    font-size: 14px;
+}
+
+.submit {
+    height: 35px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #006DAA;
+    color: white;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    font-size: 14px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.forgot{
+    font-size: 9px;
+    font-weight: 700;
+    color: #006DAA;
+    text-decoration: none;
+}
+
+.forgot-pass{
+    display: flex;
+    justify-content: flex-end;
+}
