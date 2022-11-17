@@ -1,0 +1,54 @@
+.container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.03);
+    font-size: 14px;
+}
+
+.submit {
+    height: 35px;
+    width: 70px;
+    margin-top: 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #006DAA;
+    color: white;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.04);
+    font-size: 14px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.step{
+    font-size: 12px;
+    font-weight: 700;
+    color: #006DAA;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.buttons {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.form-check-label{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+

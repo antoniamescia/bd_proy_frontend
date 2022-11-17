@@ -1,0 +1,44 @@
+.view{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.signup{
+    display: flex;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.text {
+    margin-right: 3px;
+}
+
+.link {
+    color: #006DAA;
+    text-decoration: none;
+}
+
+.title{
+    width: 300px;
+    padding: 12px;
+}
+/* 
+@media (max-width: 2000px) {
+    .container {
+        width: 500px;
+    }
+} */

@@ -1,0 +1,121 @@
+<form [formGroup]="multistepForm" class="form" (ngSubmit)="submit()">
+  <div class="container">
+    <div class="step1" *ngIf="step == 1" formGroupName="signUp">
+      <div>
+        <h4 class="step">Paso {{step}} de 3</h4>
+      </div>
+      <div class="input">
+        <label for="inputName" class="label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          formControlName="name"
+          placeholder="Ingresa tu nombre"
+        />
+      </div>
+      <div class="input">
+        <label for="inputLastName" class="label">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputLastName"
+          placeholder="Ingresa tu apellido"
+          formControlName="lastName"
+        />
+      </div>
+      <div class="input">
+        <label for="inputEmail" class="label">Correo electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          placeholder="Ingresa tu dirección de correo"
+          formControlName="email"
+        />
+      </div>
+      <div class="input">
+        <label for="inputPassword" class="label">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          placeholder="Ingresa tu contraseña"
+          formControlName="password"
+        />
+      </div>
+    </div>
+
+    <div class="step2" *ngIf="step == 2" formGroupName="personalData">
+      <div>
+        <h4 class="step">Paso {{step}} de 3</h4>
+      </div>
+      <div class="input">
+        <label for="inputDepartamento" class="label">Departamento</label>
+        <select
+          class="form-select form-control"
+          aria-label="Default select example"
+          placeholder="Elige tu departamento"
+          formControlName="departamento"
+        >
+          <!-- <option
+            *ngFor="let departamento of departamentos"
+            
+          >
+            {{ departamento.name }}
+          </option> -->
+          <option value="Artigas">Artigas</option>
+          <option value="Canelones">Canelones</option>
+          <option value="Cerro Largo">Cerro Largo</option>
+        </select>
+      </div>
+      <div class="input">
+        <label for="inputCity" class="label">Ciudad</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          placeholder="Ingresa tu ciudad"
+          formControlName="city"
+        />
+      </div>
+      <div class="input">
+        <label for="inputAdress" class="label">Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="Ingresa tu dirección"
+          formControlName="address"
+        />
+      </div>
+    </div>
+
+    <div class="step3" *ngIf="step == 3" formGroupName="securityQuestions">
+      <div>
+        <h4 class="step">Paso {{step}} de 3</h4>
+        <h5 class="label">
+          Elige tres preguntas de seguridad y provee sus respuestas.
+        </h5>
+      </div>
+      <div class="form-check" *ngFor="let question of questions">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+          formControlName="{{ questions.indexOf(question) }}"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          {{ question }}
+        </label>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a class="btn submit" *ngIf="step != 1" (click)="previous()">Anterior</a>
+      <button type="submit" class="submit" *ngIf="step != 3">Siguiente</button>
+      <button type="submit" class="submit" *ngIf="step == 3">Enviar</button>
+    </div>
+  </div>
+</form>
