@@ -36,3 +36,9 @@
     width: 300px;
     padding: 12px;
 }
+/* 
+@media (max-width: 2000px) {
+    .container {
+        width: 500px;
+    }
+} */
