@@ -9,50 +9,54 @@ import { Router } from '@angular/router';
 })
 export class SignUpFormComponent implements OnInit {
 
-  multistepForm: FormGroup = new FormGroup({
-    signUp: new FormGroup({
-      name: new FormControl(['', Validators.required]),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    }),
-    personalData: new FormGroup({
-      departamento: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-    }),
-    securityQuestions: new FormGroup({
-      1: new FormControl('', Validators.required),
-      answer1: new FormControl('', Validators.required),
-      2: new FormControl('', Validators.required),
-      answer2: new FormControl('', Validators.required),
-      3: new FormControl('', Validators.required),
-      answer3: new FormControl('', Validators.required),
-    })
-  });
+  multistepForm: FormGroup = new FormGroup({});
 
-  step: any = 1;
+  submitted: boolean = false;
 
-  departamentos: Array<any> = [
-    {name: 'Artigas', cities: []},
-    {name: 'Canelones', cities: []},
-    {name: 'Cerro Largo', cities: []},
-    {name: 'Colonia', cities: []},
-    {name: 'Durazno', cities: []},
-    {name: 'Flores', cities: []},
-    {name: 'Florida', cities: []},
-    {name: 'Lavalleja', cities: []},
-    {name: 'Maldonado', cities: []},
-    {name: 'Montevideo', cities: []},
-    {name: 'Paysandú', cities: []},
-    {name: 'Río Negro', cities: []},
-    {name: 'Rivera', cities: []},
-    {name: 'Rocha', cities: []},
-    {name: 'Salto', cities: []},
-    {name: 'San José', cities: []},
-    {name: 'Soriano', cities: []},
-    {name: 'Tacuarembó', cities: []},
-    {name: 'Treinta y Tres', cities: []},
+  // multistepForm: FormGroup = new FormGroup({
+  //   signUp: new FormGroup({
+  //     name: new FormControl(['', Validators.required]),
+  //     lastName: new FormControl('', Validators.required),
+  //     email: new FormControl('', [Validators.required, Validators.email]),
+  //     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  //   }),
+  //   personalData: new FormGroup({
+  //     departamento: new FormControl('', Validators.required),
+  //     city: new FormControl('', Validators.required),
+  //     address: new FormControl('', Validators.required),
+  //   }),
+  //   securityQuestions: new FormGroup({
+  //     1: new FormControl('', Validators.required),
+  //     answer1: new FormControl('', Validators.required),
+  //     2: new FormControl('', Validators.required),
+  //     answer2: new FormControl('', Validators.required),
+  //     3: new FormControl('', Validators.required),
+  //     answer3: new FormControl('', Validators.required),
+  //   })
+  // });
+
+  step: number = 1;
+
+  departamentos: string[] = [
+    'Artigas',
+    'Canelones',
+    'Cerro Largo',
+    'Colonia',
+    'Durazno',
+    'Flores',
+    'Florida',
+    'Lavalleja',
+    'Maldonado',
+    'Montevideo',
+    'Paysandú',
+    'Río Negro',
+    'Rivera',
+    'Rocha',
+    'Salto',
+    'San José',
+    'Soriano',
+    'Tacuarembó',
+    'Treinta y Tres'
   ];
 
   questions: Array<any> = [
@@ -64,12 +68,17 @@ export class SignUpFormComponent implements OnInit {
     '¿Quién era el héroe de tu infancia?'
   ]
 
+  multistepFormControls = this.multistepForm.controls;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router) {}
+  
+  
+  ngOnInit(): void {
+    
     this.multistepForm = this.fb.group({
       signUp: this.fb.group({
-        name: ['', Validators.required],
-        lastName: ['', Validators.required],
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        lastName: ['', [Validators.required, Validators.minLength(6)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
       }),
@@ -93,16 +102,18 @@ export class SignUpFormComponent implements OnInit {
         answer6: ['']
       })
     });
-  }
-
-
-  ngOnInit(): void {
     
+    console.log(this.multistepForm.controls);
   }
+
+  
+  
+
 
   submit() {
     this.step += 1;
     if(this.step === 4){
+      this.submitted = true;
       console.log(this.multistepForm.value);
       this.router.navigateByUrl('/inicio');
     }

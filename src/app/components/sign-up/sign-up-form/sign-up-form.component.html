@@ -13,6 +13,9 @@
           formControlName="name"
           placeholder="Ingresa tu nombre"
         />
+        <span class="text-danger" *ngIf="multistepFormControls">
+        Nombre es requerido
+        </span>
       </div>
       <div class="input">
         <label for="inputLastName" class="label">Apellido</label>
@@ -58,15 +61,12 @@
           placeholder="Elige tu departamento"
           formControlName="departamento"
         >
-          <!-- <option
+          <option
             *ngFor="let departamento of departamentos"
             
           >
-            {{ departamento.name }}
-          </option> -->
-          <option value="Artigas">Artigas</option>
-          <option value="Canelones">Canelones</option>
-          <option value="Cerro Largo">Cerro Largo</option>
+            {{ departamento }}
+          </option>
         </select>
       </div>
       <div class="input">
