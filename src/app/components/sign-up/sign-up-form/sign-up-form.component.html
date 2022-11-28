@@ -58,15 +58,12 @@
           placeholder="Elige tu departamento"
           formControlName="departamento"
         >
-          <!-- <option
+          <option
             *ngFor="let departamento of departamentos"
             
           >
-            {{ departamento.name }}
-          </option> -->
-          <option value="Artigas">Artigas</option>
-          <option value="Canelones">Canelones</option>
-          <option value="Cerro Largo">Cerro Largo</option>
+            {{ departamento }}
+          </option>
         </select>
       </div>
       <div class="input">
@@ -93,29 +90,46 @@
 
     <div class="step3" *ngIf="step == 3" formGroupName="securityQuestions">
       <div>
-        <h4 class="step">Paso {{step}} de 3</h4>
+        <h4 class="step">Paso {{step}} de 4</h4>
         <h5 class="label">
-          Elige tres preguntas de seguridad y provee sus respuestas.
+          Elige una pregunta de seguridad
         </h5>
       </div>
       <div class="form-check" *ngFor="let question of questions">
         <input
           class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault"
-          formControlName="{{ questions.indexOf(question) }}"
+          type="radio"
+          value={{question.IdPregunta}}
+          name="questionId" 
+          id="flexRadioDefault1"
+          formControlName="questionId"
         />
-        <label class="form-check-label" for="flexCheckDefault">
-          {{ question }}
+        <label class="form-check-label" for="flexRadioDefault1">
+          {{ question.Pregunta }}
         </label>
+      </div>
+    </div>
+
+    <div class="step4" formGroupName="securityQuestions" *ngIf="step === 4">
+      <h4 class="step">Paso {{step}} de 4</h4>
+      <div class="input">
+        <h5 class="label">
+          Provee tu respuesta
+        </h5>
+        <input
+          type="text"
+          class="form-control"
+          id="answer"
+          placeholder="Ingresa tu respuesta"
+          formControlName="answer"
+        />
       </div>
     </div>
 
     <div class="buttons">
       <a class="btn submit" *ngIf="step != 1" (click)="previous()">Anterior</a>
-      <button type="submit" class="submit" *ngIf="step != 3">Siguiente</button>
-      <button type="submit" class="submit" *ngIf="step == 3">Enviar</button>
+      <button type="submit" class="submit" *ngIf="step != 4">Siguiente</button>
+      <button type="submit" class="submit" *ngIf="step == 4">Enviar</button>
     </div>
   </div>
 </form>

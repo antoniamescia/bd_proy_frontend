@@ -14,12 +14,14 @@
     <label for="inputPassword" class="label">Contraseña</label>
       <input type="password" class="form-control" id="inputPassword" placeholder="Ingresa tu contraseña" formControlName="password"/>
       <div class="forgot-pass">
-
-          <a href="" class="forgot">Olvidé mi contraseña</a>
+          <a href="" class="forgot" routerLink="/recuperar-contrasena">Olvidé mi contraseña</a>
       </div>
     </div>
 
-        <button type="submit" class="submit" (click)="login()">Iniciar sesión</button>
+        <button type="submit" class="submit" (click)="login()">
+          <span *ngIf="!submitted">Iniciar sesión</span>
+          <div class="spinner-border spinner-border-sm" role="status" *ngIf="submitted"></div>
+        </button>
 
   </div>
 </form>
