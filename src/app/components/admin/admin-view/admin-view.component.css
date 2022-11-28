@@ -1,0 +1,42 @@
+.container {
+    margin-top: 50px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions button {
+    border-radius: 50%;
+}
+
+.denied {
+    display: none;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.menu {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.menu button {
+    border: none;
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.menu button:hover {
+    cursor: grab;
+}
+
+.menu button span {
+    margin-right: 5px;
+}

@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="menu">
+        <button (click)="logout()">
+            <span>Cerrar sesión</span>
+            <i class="bi bi-box-arrow-in-left"></i>
+        </button>
+    </div>
+    <div class="header">
+        <div class="title">
+            <h1 class="welcome">¡Bienvenido!</h1>
+        </div>
+    </div>
+    <div class="page-title">
+        <h3>Administración de permisos</h3>
+    </div>
+    <div class="box box-primary">
+        <div class="box-body">
+            <div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table
+                        width="100%"
+                        class="table table-hover dataTable no-footer dtr-inline"
+                        style="width: 100%;"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Aplicación</th>
+                                    <th>Permiso</th>
+                                    <th>Fecha solicitud</th>
+                                    <th>Fecha autorización</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of rows">
+                                    <td>{{row.name}}</td>
+                                    <td>{{row.email}}</td>
+                                    <td>{{row.app}}</td>
+                                    <td>{{row.role}}</td>
+                                    <td>{{row.requestDate}}</td>
+                                    <td>{{row.approvalDate}}</td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-success" *ngIf="row.status === 'Aprobado'">Autorizado</span>
+                                        <span class="badge rounded-pill bg-danger" *ngIf="row.status === 'Denegado'">Denegado</span>
+                                        <span class="badge rounded-pill bg-warning text-dark" *ngIf="row.status === 'Pendiente'">Pendiente</span>
+                                    </td>
+                                    <td class="actions">
+                                        <button type="button denied" class="btn btn-outline-success" *ngIf="row.status !== 'Aprobado'"><i class="bi bi-check"></i></button>
+                                        <button type="button" class="btn btn-outline-danger" *ngIf="row.status !== 'Denegado'"><i class="bi bi-x"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+</div>
