@@ -43,6 +43,12 @@ export class AuthService {
     
     localStorage.setItem('token', authResult.body.token);
     localStorage.setItem('expiration', JSON.stringify(expiresAt.valueOf()));
+
+    if (authResult.body.roles == null) {
+      localStorage.setItem('role', JSON.stringify(''));
+      return
+    } 
+
     localStorage.setItem('role', JSON.stringify(authResult.body.roles[0].description));
   }
 
@@ -66,7 +72,7 @@ export class AuthService {
     return moment(expiresAt);
   }
 
-  getRoles() {
+  getRoles() {      
     const role = localStorage.getItem('role') as string;
     const roles = JSON.parse(role);
 

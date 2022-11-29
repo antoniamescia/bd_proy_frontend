@@ -19,4 +19,9 @@ export class RequestsService {
   handleRequest(estado: any, userId: any, appId: any, rolNegId: any) {
     return this.http.put(this.url+'permissions/requests', {estado, userId, appId, rolNegId}, {observe: 'response'});
   }
+
+  getNewRequestOptions() {
+    return this.http.get(this.url+'permissions/rolesapp');
+  }
+
 }

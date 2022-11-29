@@ -33,7 +33,11 @@ export class LoginFormComponent implements OnInit {
       this.authService.login(val.email, val.password).subscribe(
         (res) => {          
           if (res.status == 200) {
-            this.router.navigateByUrl('/admin');
+            if (this.authService.isAdmin()) {
+              this.router.navigateByUrl('/admin');
+            } else if (!this.authService.isAdmin()) {
+              this.router.navigateByUrl('/gestion');
+            }
           } else {
             this.submitted = false;
             alert('Usuario o contraseña incorrectos');
@@ -42,3 +46,7 @@ export class LoginFormComponent implements OnInit {
     }
   }
 }
+function isAdmin() {
+  throw new Error('Function not implemented.');
+}
+
