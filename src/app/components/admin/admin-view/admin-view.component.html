@@ -40,21 +40,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let row of rows">
-                                    <td>{{row.name}}</td>
-                                    <td>{{row.email}}</td>
-                                    <td>{{row.app}}</td>
-                                    <td>{{row.role}}</td>
-                                    <td>{{row.requestDate}}</td>
-                                    <td>{{row.approvalDate}}</td>
+                                <tr *ngFor="let req of requests">
+                                    <td>{{req.nombre}}</td>
+                                    <td>{{req.email}}</td>
+                                    <td>{{req.aplicacion}}</td>
+                                    <td>{{req.permiso}}</td>
+                                    <td>{{req.fechaSolicitud}}</td>
+                                    <td>{{req.fechaAutorizacion}}</td>
                                     <td>
-                                        <span class="badge rounded-pill bg-success" *ngIf="row.status === 'Aprobado'">Autorizado</span>
-                                        <span class="badge rounded-pill bg-danger" *ngIf="row.status === 'Denegado'">Denegado</span>
-                                        <span class="badge rounded-pill bg-warning text-dark" *ngIf="row.status === 'Pendiente'">Pendiente</span>
+                                        <span class="badge rounded-pill bg-success" *ngIf="req.estado === 'ACTIVO'">Autorizado</span>
+                                        <span class="badge rounded-pill bg-danger" *ngIf="req.estado === 'RECHAZADO'">Denegado</span>
+                                        <span class="badge rounded-pill bg-warning text-dark" *ngIf="req.estado === 'PENDIENTE'">Pendiente</span>
                                     </td>
                                     <td class="actions">
-                                        <button type="button denied" class="btn btn-outline-success" *ngIf="row.status !== 'Aprobado'"><i class="bi bi-check"></i></button>
-                                        <button type="button" class="btn btn-outline-danger" *ngIf="row.status !== 'Denegado'"><i class="bi bi-x"></i></button>
+                                        <button type="button denied" class="btn btn-outline-success" *ngIf="req.estado !== 'ACTIVO'" (click)="approveRequest('ACTIVO', req.userId, req.appId, req.rolNegId)"><i class="bi bi-check"></i></button>
+                                        <button type="button" class="btn btn-outline-danger" *ngIf="req.estado !== 'RECHAZADO'" (click)="rejectRequest('RECHAZADO', req.userId, req.appId, req.rolNegId)"><i class="bi bi-x"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -66,3 +66,4 @@
         </div>
     </div>
 </div>
+
