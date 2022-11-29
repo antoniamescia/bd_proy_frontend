@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="menu">
+        <button (click)="logout()">
+            <span>Cerrar sesión</span>
+            <i class="bi bi-box-arrow-in-left"></i>
+        </button>
+    </div>
+    <button type="button" class="btn btn-dark solicitar" routerLink="/solicitud">Solicitar nuevo permiso</button>
+
+    <div class="container">
+        <div class="card row" style="width: 18rem;" *ngFor="let i of appsAndMenus">
+            <div class="col">
+                <ul class="list-group list-group-flush col">
+                  <li class="list-group-item"><span>Aplicativo:</span> {{i.aplicativo}}</li>
+                  <li class="list-group-item"><span>Rol de negocio:</span> {{i.rolNegocio}}</li>
+                  <li class="list-group-item"><span>Acción permitida:</span> {{i.menu}}</li>
+                </ul>
+            </div>
+          </div>
+    </div>
+</div>

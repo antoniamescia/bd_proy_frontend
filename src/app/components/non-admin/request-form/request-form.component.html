@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="title">
+        <h1 class="welcome">Nueva solicitud</h1>
+      </div>
+    <form action="" [formGroup]="requestForm">
+        <div class="input">
+            <label for="inputRol" class="label">Rol de negocio</label>
+            <select
+              class="form-select form-control"
+              aria-label="Default select example"
+              placeholder="Rol de negocio"
+              formControlName="roleNegId"
+            >
+              <option *ngFor="let role of roles" [value]="role.rolNegId">
+                {{ role.nombre }}
+              </option>
+            </select>
+        </div>
+
+        <div class="apps">
+            <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value=""
+                  name="appId" 
+                  id="flexRadioDefault1"
+                  formControlName="appId"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+    
+                </label>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-dark">Solicitar</button>
+    </form>
+
+    <br>
+
+    <span>{{this.requestForm.value.roleNegId | json}}</span>
+</div>
