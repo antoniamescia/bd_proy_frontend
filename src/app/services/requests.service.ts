@@ -24,4 +24,8 @@ export class RequestsService {
     return this.http.get(this.url+'permissions/rolesapp');
   }
 
+  createNewRequest(rolNegId: any, appId: any) {
+    return this.http.post(this.url+'permissions/requests', {rolNegId, appId}, {observe: 'response'});
+  }
+
 }

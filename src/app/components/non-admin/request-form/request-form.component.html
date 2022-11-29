@@ -10,33 +10,32 @@
               aria-label="Default select example"
               placeholder="Rol de negocio"
               formControlName="roleNegId"
+              (change)="getAppsByRole()"
             >
-              <option *ngFor="let role of roles" [value]="role.rolNegId">
+              <option #roles *ngFor="let role of roles" [value]="role.rolNegId">
                 {{ role.nombre }}
               </option>
             </select>
         </div>
 
-        <div class="apps">
-            <div class="form-check">
+        <div class="input">
+            <label for="inputRol" class="label">Aplicativo</label>
+            <div class="form-check" *ngFor="let app of apps">
                 <input
                   class="form-check-input"
                   type="radio"
-                  value=""
+                  value={{app.appId}}
                   name="appId" 
                   id="flexRadioDefault1"
                   formControlName="appId"
                 />
-                <label class="form-check-label" for="flexRadioDefault1">
-    
+                <label class="form-check-label" for="flexRadioDefault1" >
+                    {{ app.nombreApp }}   
                 </label>
             </div>
         </div>
+    
 
-        <button type="button" class="btn btn-dark">Solicitar</button>
+        <button type="button" class="btn btn-dark" (click)="createRequest()">Solicitar</button>
     </form>
-
-    <br>
-
-    <span>{{this.requestForm.value.roleNegId | json}}</span>
 </div>

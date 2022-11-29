@@ -64,6 +64,7 @@ export class AdminViewComponent implements OnInit {
         console.log(res.body);
       }
     );
+    window.location.reload();
   }
 
   rejectRequest(estado: any, userId: any, appId: any, rolNegId: any) {
@@ -72,5 +73,6 @@ export class AdminViewComponent implements OnInit {
         console.log(res.body);
       }
     );
+    window.location.reload();
   }
 }

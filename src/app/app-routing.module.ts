@@ -11,7 +11,7 @@ import { ForgotPasswordViewComponent } from './components/forgot-password/forgot
 import { RequestFormComponent } from './components/non-admin/request-form/request-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: LoginViewComponent },
   { path: 'registro', component: SignUpViewComponent },
   { path: 'recuperar-contrasena', component: ForgotPasswordViewComponent },
