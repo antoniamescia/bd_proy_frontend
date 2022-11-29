@@ -29,6 +29,7 @@ export class AuthService {
   signUp(user: any, question: any) {
     return this.http.post<any>(this.url+'signup', { user, question}, {observe: 'response'});
   }
+  
 
   recoverPassword(email: string, pregunta_id: number, respuesta: string) {
     return this.http.post<any>(this.url+'authenticate/recoverpwd', { email, pregunta_id, respuesta }, {observe: 'response'});
@@ -38,14 +39,17 @@ export class AuthService {
     console.log(authResult);
     
     const expiresAt = new Date(authResult.body.expiration * 1000);
-    console.log('expiresAt',expiresAt);
-    console.log('authResult.token',authResult.body.token);
-    
-    
+
     
     localStorage.setItem('token', authResult.body.token);
     localStorage.setItem('expiration', JSON.stringify(expiresAt.valueOf()));
-    // localStorage.setItem('roles', JSON.stringify(authResult.body.user));
+
+    if (authResult.body.roles == null) {
+      localStorage.setItem('role', JSON.stringify(''));
+      return
+    } 
+
+    localStorage.setItem('role', JSON.stringify(authResult.body.roles[0].description));
   }
 
   logout() {
@@ -66,6 +70,17 @@ export class AuthService {
     const expiresAt = JSON.parse(expiration);
 
     return moment(expiresAt);
+  }
+
+  getRoles() {      
+    const role = localStorage.getItem('role') as string;
+    const roles = JSON.parse(role);
+
+    return roles;
+  }
+
+  isAdmin() {
+    return this.getRoles() === 'Administrador';
   }
 
 }

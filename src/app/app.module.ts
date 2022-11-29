@@ -14,6 +14,8 @@ import { AdminViewComponent } from './components/admin/admin-view/admin-view.com
 
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { NonAdminViewComponent } from './components/non-admin/non-admin-view/non-admin-view.component';
+import { RequestFormComponent } from './components/non-admin/request-form/request-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { AuthInterceptor } from './auth.interceptor';
     SignUpViewComponent,
     ForgotPasswordViewComponent,
     AdminViewComponent,
+    NonAdminViewComponent,
+    RequestFormComponent,
     
   ],
   imports: [
